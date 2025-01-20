@@ -1,0 +1,36 @@
+// main.scss
+
+@font-face {
+    font-family: 'Academic M54';
+    src: url('../fonts/AcademicM54.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+//나머지 SCSS 파일 import
+  @import 'homePage';
+  @import 'header';
+  @import 'footer';
+  @import 'loginPage';
+
+  @import 'article/economyPage';
+  @import 'article/interviewPage';
+  @import 'article/moviePage';
+
+  @import 'lab/labs';
+  @import 'lab/capIPage';
+  @import 'lab/capIIPage';
+
+  @import 'news/awardPage';
+  @import 'news/swPage';
+
+  @import 'newsletter/newsletterPage';
+  
+  @import 'shop/goodsPage';
+
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
