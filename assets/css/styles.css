@@ -1,0 +1,786 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Academic M54";
+  src: url("../fonts/PretendardVariable.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url("/assets/fonts/RedHatDisplay.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* 전역 CSS 파일이나 style 태그 등 원하는 곳에 추가 */
+.hide-scrollbar {
+  /* 파이어폭스 전용 */
+  scrollbar-width: none;
+  /* 구형 IE/Edge 전용 */
+  -ms-overflow-style: none;
+}
+
+/* 웹킷 계열 브라우저(크롬, 사파리 등)를 위한 처리 */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hidden-section {
+  visibility: hidden; /* 숨김 처리 */
+  opacity: 0; /* 완전히 투명하게 */
+  transition: visibility 0s linear 0.3s, opacity 0.3s ease; /* 부드러운 전환 */
+}
+
+.visible-section {
+  visibility: visible !important; /* 보이기 처리 */
+  opacity: 1 !important; /* 불투명 */
+  transition: opacity 0.3s ease !important; /* 부드러운 전환 */
+}
+
+/* HARU 스타일 */
+.home-title {
+  font-size: 12rem;
+  font-weight: bold;
+  color: #010101;
+  margin: 0;
+  opacity: 1; /* 처음에는 완전히 보임 */
+  transform: translateY(0px) scale(1); /* 초기 크기와 위치 */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* 부드러운 애니메이션 */
+}
+
+/* 표어 스타일 */
+.home-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 15rem;
+  color: rgba(255, 255, 255, 0); /* 초기 투명 */
+  opacity: 0; /* 초기 투명 */
+  transition: opacity 0.3s ease, color 0.3s ease; /* 부드러운 애니메이션 */
+}
+
+/* 레이아웃 */
+.home-section1 {
+  position: fixed; /* 고정 위치 */
+  width: 100%;
+  height: 100vh; /* 화면 전체 차지 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10; /* 다른 섹션 위에 위치 */
+  transition: transform 0.3s ease; /* 부드러운 전환 효과 */
+  margin-top: 15rem;
+  top: 4rem;
+}
+
+.home-image-container {
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 텍스트 아래 배치 */
+}
+
+.home-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지를 화면에 맞춤 */
+}
+
+.home-text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* 다음 콘텐츠 섹션 */
+.content-section {
+  position: relative;
+  margin-top: 100rem; /* 다음 섹션과 분리 */
+  padding: 2rem;
+  background: #f5f5f5;
+}
+
+.content-section h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.content-section p {
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Section2 매거진 스타일 */
+.home-section2 {
+  visibility: hidden;
+  position: relative;
+  margin-top: 10rem;
+  background-color: #fff; /* 배경색 흰색 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.home-section2-container {
+  max-width: 800px; /* 중앙 콘텐츠 최대 너비 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 2rem;
+}
+
+.home-section2-title {
+  font-size: 1.5rem; /* 큰 제목 폰트 크기 */
+  font-weight: bold; /* 볼드체 */
+  color: #000; /* 검은색 텍스트 */
+  margin-bottom: 1rem; /* 제목 하단 여백 */
+}
+
+.home-section2-divider {
+  display: block;
+  margin: 0.5rem auto; /* 중앙 정렬 */
+  width: 30rem; /* 선 너비 */
+}
+
+.home-section2-content {
+  margin: 2rem 0;
+  font-family: Arial, sans-serif; /* 기본 폰트 */
+}
+
+.home-section2-subtitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.home-section2-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.home-section2-list {
+  list-style: none; /* 기본 리스트 스타일 제거 */
+  padding: 0;
+  margin: 0;
+}
+
+.home-section2-list li {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* 버튼 스타일 */
+.home-section2-button {
+  display: inline-block;
+  padding: 0.5rem 2rem; /* 버튼 크기 조정 */
+  font-size: 1.2rem;
+  font-weight: 100;
+  color: #000; /* 글씨 색상 */
+  background-color: transparent; /* 배경 없음 */
+  border: 1px solid #000; /* 검은색 테두리 */
+  cursor: pointer;
+  font-family: "RedHatDisplay", sans-serif; /* 지정 폰트 */
+  transition: background-color 0.3s ease, color 0.3s ease; /* 호버 효과 */
+  margin: 1.5rem; /* 버튼 여백 */
+  text-align: center;
+  text-decoration: none; /* 텍스트 밑줄 제거 */
+}
+
+.home-section2-button:hover {
+  background-color: #000; /* 호버 시 배경색 변경 */
+  color: #fff; /* 호버 시 글씨 색상 변경 */
+}
+
+.home-interview {
+  margin: 4rem 0;
+  display: flex; /* Flexbox 활성화 */
+  justify-content: space-between; /* 기본 간격 조정 */
+}
+.home-interview .home-interview-toc {
+  flex: 3;
+}
+.home-interview .home-interview-toc .home-interview-line {
+  display: flex; /* flex 사용 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  width: 20rem;
+  height: 1px;
+  background-color: #000;
+  border: none;
+  margin: 4.5rem 0;
+}
+.home-interview .home-interview-toc .home-interview-interview {
+  font-family: "RedHatDisplay", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-left: 5rem;
+}
+.home-interview .home-interview-container {
+  flex: 7;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end; /* 왼쪽 정렬 */
+  margin-top: 10rem;
+  margin-right: 5rem;
+  gap: 1rem;
+}
+.home-interview .home-interview-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+}
+.home-interview .home-interview-card {
+  flex: 0 0 20vw; /* 고정된 카드 크기 */
+  text-align: left;
+}
+.home-interview .home-interview-card .home-interview-image {
+  width: 100%;
+  height: auto;
+}
+.home-interview .home-interview-card .home-interview-content {
+  margin-top: 1rem;
+}
+.home-interview .home-interview-card .home-interview-content .home-interview-meta {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+.home-interview .home-interview-card .home-interview-content .home-interview-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+.home-interview .home-interview-card .home-interview-content .home-interview-summary {
+  font-size: 0.9rem;
+  color: #777;
+  line-height: 1.5;
+}
+
+.home-weekly-news {
+  margin: 4rem 0;
+}
+.home-weekly-news .home-weekly-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.home-weekly-news .home-weekly-header .home-weekly-line {
+  width: 20rem;
+  height: 1px;
+  background-color: #000;
+  border: none;
+}
+.home-weekly-news .home-weekly-header .home-weekly-title {
+  font-family: "RedHatDisplay", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-left: 5rem;
+  margin-bottom: 5rem;
+}
+.home-weekly-news .carousel-container {
+  display: flex;
+  overflow-x: auto; /* 가로 스크롤 허용 */
+  scroll-behavior: smooth; /* 스크롤 부드럽게 */
+  gap: 1rem; /* 카드 간 간격 */
+}
+.home-weekly-news .home-news-carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.home-weekly-news .home-news-carousel .carousel-container {
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.home-weekly-news .home-news-carousel .carousel-container .news-card {
+  flex: 0 0 30%; /* 카드 너비를 적절히 설정 */
+  margin-right: 1rem; /* 카드 간 간격 */
+}
+.home-weekly-news .home-news-carousel .carousel-container .news-card .news-image {
+  width: 40rem;
+  height: auto;
+  border-radius: 10px;
+}
+.home-weekly-news .home-news-carousel .carousel-container .news-card .news-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.home-weekly-news .home-news-carousel .carousel-container .news-card .news-content .news-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.home-weekly-news .home-news-carousel .carousel-container .news-card .news-content .news-date {
+  font-size: 1rem;
+}
+.home-weekly-news .home-news-carousel .carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+.home-weekly-news .home-news-carousel .left-arrow {
+  left: 20rem;
+}
+.home-weekly-news .home-news-carousel .right-arrow {
+  right: 20rem;
+}
+
+.home-swjungdae {
+  margin: 4rem 0;
+  display: flex; /* Flexbox 활성화 */
+}
+
+.home-swjungdae-header {
+  flex: 3;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.home-swjungdae-content {
+  flex: 7;
+}
+
+.home-swjungdae-line {
+  width: 20rem;
+  height: 1px;
+  background-color: #000;
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.home-swjungdae-title {
+  font-family: "RedHatDisplay", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #000;
+  margin-left: 5rem;
+  margin-bottom: 5rem;
+}
+
+.home-swjungdae-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem;
+  margin-top: 5rem;
+}
+
+.swjungdae-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* 부드러운 배경색 및 이동 효과 */
+}
+
+.swjungdae-item:hover {
+  transform: translateX(5px); /* 호버 시 약간 오른쪽으로 이동 */
+}
+
+.swjungdae-title {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #333;
+  transition: color 0.3s ease; /* 글자색 부드러운 전환 */
+}
+
+.swjungdae-date {
+  font-size: 1rem;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+/* 호버 시 텍스트 색상 변화 */
+.swjungdae-item:hover .swjungdae-title {
+  color: #000; /* 제목이 진한 검정으로 */
+}
+
+.swjungdae-item:hover .swjungdae-date {
+  color: #333; /* 날짜가 약간 더 진하게 */
+}
+
+.home-swjungdae-more {
+  text-align: right;
+  margin-right: 2rem;
+}
+
+.home-swjungdae-readmore {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s ease, border-color 0.3s ease; /* 부드러운 효과 추가 */
+}
+
+/* 호버 시 read more 스타일 변화 */
+.home-swjungdae-readmore:hover {
+  color: #555; /* 텍스트 색상 회색으로 변경 */
+  border-color: #555; /* 밑줄 색상 회색으로 변경 */
+  text-decoration: none;
+  transform: scale(1.05); /* 약간 확대 */
+}
+
+/* Header */
+.header {
+  position: fixed; /* 고정 위치 */
+  top: 0; /* 화면 상단 */
+  width: 100%; /* 화면 전체 너비 */
+  z-index: 1000; /* 다른 요소보다 위에 위치 */
+  background-color: #ffffff; /* 흰색 배경 */
+  padding: 0.5rem 2rem; /* 상하 좌우 여백 */
+  box-sizing: border-box; /* 패딩 포함한 높이 계산 */
+  display: flex; /* flexbox 활성화 */
+  justify-content: space-between; /* 로고와 내비게이션 사이 간격 확보 */
+  align-items: center; /* 수직 중앙 정렬 */
+  height: auto; /* 자동 높이 */
+}
+.header .header-logo a {
+  display: inline-block;
+}
+.header .header-logo a img {
+  width: 4rem; /* 원하는 로고 너비 */
+  height: auto; /* 비율 유지 */
+}
+.header .header-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+.header .header-nav ul li a {
+  font-size: 1rem;
+  color: #000;
+  text-decoration: none;
+  position: relative; /* 밑줄을 위한 기준 위치 설정 */
+}
+.header .header-nav ul li a:hover {
+  color: #7E7E7E;
+}
+.header .header-nav ul li a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px; /* 텍스트 아래에 밑줄 위치 */
+  width: 100%;
+  height: 1px;
+  background-color: #000; /* 밑줄 색상 */
+}
+.header .header-nav ul .login-btn {
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  padding: 0;
+}
+.footer .footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0rem 3rem;
+}
+.footer .footer-container .footer-left {
+  width: 50%;
+  text-align: left;
+}
+.footer .footer-container .footer-left img {
+  width: 4rem;
+  height: auto;
+}
+.footer .footer-container .footer-left p {
+  font-size: 0.9rem;
+  color: #555;
+}
+.footer .footer-container .footer-divider {
+  width: 1px;
+  background-color: #e0e0e0;
+  height: 12rem; /* 고정 높이 */
+  margin: 0; /* 좌우 여백 */
+}
+.footer .footer-container .footer-right {
+  width: 50%;
+  display: flex;
+  justify-content: space-around; /* 컬럼 간격 조정 */
+  text-align: left;
+}
+.footer .footer-container .footer-right .footer-column h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.footer .footer-container .footer-right .footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer .footer-container .footer-right .footer-column ul li {
+  margin: 0.5rem 0;
+}
+.footer .footer-container .footer-right .footer-column ul li a {
+  font-size: 0.9rem;
+  color: #010101;
+  text-decoration: none;
+}
+.footer .footer-container .footer-right .footer-column ul li a:hover {
+  color: #7E7E7E;
+}
+.footer .footer-container .footer-right .footer-column ul li img {
+  width: 20px; /* 아이콘 크기 */
+  height: auto;
+}
+.footer .footer-bottom {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1rem;
+  text-align: center; /* 중앙 정렬 */
+}
+.footer .footer-bottom p {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0; /* 추가 여백 제거 */
+}
+
+/* 목차와 콘텐츠 레이아웃 */
+.contents-page {
+  display: flex;
+  height: calc(100vh - 80px); /* 헤더 제외 전체 높이 */
+}
+
+.contents-nav {
+  width: 35%; /* 목차 영역 너비 */
+  padding: 2rem;
+  background-color: #fff; /* 깔끔한 배경색 */
+  padding-top: 10rem;
+}
+
+.contents-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contents-nav li {
+  margin-bottom: 1rem;
+}
+
+.contents-item {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-decoration: none;
+  color: #000;
+  padding: 0.5rem 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  position: relative; /* ::after 위치 기준 */
+}
+
+.contents-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.3rem; /* 텍스트 아래에 밑줄 위치 */
+  width: 0; /* 초기 밑줄 길이 */
+  height: 0.1rem; /* 밑줄 두께 */
+  background-color: #000; /* 밑줄 색상 */
+  transition: width 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.contents-item:hover::after,
+.contents-item.active::after {
+  width: 100%; /* 호버 또는 활성화 시 전체 길이로 확장 */
+}
+
+.contents-item.active {
+  color: #000;
+}
+
+.inner-content {
+  width: 65%; /* 콘텐츠 영역 너비 */
+  padding-top: 2rem;
+  overflow: hidden;
+}
+
+.inner-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Header Section */
+.labs-header {
+  display: flex;
+  flex-direction: column; /* 요소들을 세로로 정렬 */
+  align-items: flex-end; /* 요소들을 오른쪽으로 붙임 */
+  padding: 1rem 2rem;
+  background-color: #fff;
+  margin-top: 2rem;
+  gap: 1rem; /* 요소 간 간격 추가 */
+}
+
+.labs-search-container {
+  position: relative; /* 아이콘 위치 조정을 위해 부모를 relative로 설정 */
+  width: 40%;
+}
+
+.labs-search-input {
+  width: 100%; /* 입력 필드가 컨테이너의 전체 너비를 차지하도록 설정 */
+  border: none;
+  border-bottom: 0.5px solid #000; /* 아래 선 추가 */
+  outline: none;
+  padding: 0.5rem 0; /* 상하 여백만 추가 */
+  font-size: 1rem;
+}
+
+.labs-search-icon {
+  position: absolute; /* 아이콘을 선 위에 고정 */
+  right: 0; /* 오른쪽 끝에 배치 */
+  top: 50%; /* 수직 중앙 정렬 */
+  transform: translateY(-50%); /* 정확히 중앙으로 이동 */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.labs-search-icon img {
+  width: 1rem; /* 아이콘 크기 조정 */
+  height: 1rem;
+}
+
+.labs-sort-container {
+  position: relative;
+}
+
+.labs-sort-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.labs-sort-options {
+  position: absolute;
+  top: 2rem;
+  right: 0; /* 오른쪽 정렬 */
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none; /* 기본적으로 숨김 */
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.labs-sort-options.show {
+  display: block; /* 클릭 시 표시 */
+}
+
+.labs-sort-options li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+}
+
+.labs-sort-options li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Main Labs List */
+.labs-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.labs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.labs-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.labs-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.labs-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.labs-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.labs-card-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.labs-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.labs-card-content h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.labs-card-content p {
+  margin: 0.2rem 0;
+  color: #555;
+}
+
+.labs-card-content .labs-tags {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=styles.css.map */

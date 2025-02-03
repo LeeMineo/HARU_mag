@@ -2,20 +2,30 @@
 
 @font-face {
     font-family: 'Academic M54';
-    src: url('../fonts/AcademicM54.ttf') format('truetype');
+    src: url('../fonts/PretendardVariable.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
   
+
+  @font-face {
+    font-family: 'RedHatDisplay';
+    src: url('/assets/fonts/RedHatDisplay.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 //나머지 SCSS 파일 import
   @import 'homePage';
   @import 'header';
   @import 'footer';
   @import 'loginPage';
+  @import 'contents';
 
-  @import 'article/economyPage';
-  @import 'article/interviewPage';
-  @import 'article/moviePage';
+  @import 'articles/economyPage';
+  @import 'articles/interviewPage';
+  @import 'articles/moviePage';
 
   @import 'lab/labs';
   @import 'lab/capIPage';

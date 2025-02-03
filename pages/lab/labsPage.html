@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haru Magazine - labsPage</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body style="overflow: hidden;">
+    <!-- 검색 및 정렬 영역 -->
+    <header class="labs-header">
+        <div class="labs-search-container">
+            <input type="text" id="labs-search-input" class="labs-search-input" placeholder=" ">
+            <button class="labs-search-icon">
+                <img src="/assets/images/search_icon.svg" alt="Search Icon">
+            </button>
+        </div>
+        <div class="labs-sort-container">
+            <button id="labs-sort-btn" class="labs-sort-btn">All ▼</button>
+            <ul id="labs-sort-options" class="labs-sort-options">
+                <li data-sort="all">All</li>
+                <li data-sort="asc">가나다순</li>
+                <li data-sort="desc">역순</li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="labs-container">
+        <div id="labs-list" class="labs-list">
+            <!-- Lab cards will be dynamically injected here -->
+        </div>
+    </main>
+
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const labsData = [
+        { professor: "김영식", labName: "MMIC Lab", description: "MMIC Lab(Monolithic Microwave Integrated Circuit Laboratory)은 유/무선 통신에 활용되는 고속·저전력 회로에 대한 연구를 하는 곳입니다.", tags: ["#통신", "#저전력 회로"], image: "/assets/images/catcat.png" },
+        { professor: "이은주", labName: "AI Lab", description: "AI Lab은 인공지능 및 머신러닝 기술을 연구합니다.", tags: ["#AI", "#머신러닝"], image: "/assets/images/catcat.png" },
+        { professor: "박철수", labName: "Quantum Computing Lab", description: "Quantum Computing Lab은 양자 컴퓨팅 기술의 이론과 응용을 연구합니다.", tags: ["#양자 컴퓨팅", "#혁신"], image: "/assets/images/catcat.png" },
+        { professor: "최수민", labName: "Bioinformatics Lab", description: "Bioinformatics Lab은 생명정보학 기술을 활용합니다.", tags: ["#생명정보학", "#유전체 분석"], image: "/assets/images/catcat.png" }
+    ];
+
+    const labsList = document.getElementById("labs-list");
+    const searchInput = document.getElementById("labs-search-input");
+    const sortBtn = document.getElementById("labs-sort-btn");
+    const sortOptions = document.getElementById("labs-sort-options");
+
+    const renderLabs = (data) => {
+        labsList.innerHTML = data.map(lab => `
+            <div class="labs-card">
+                <img src="${lab.image}" alt="${lab.labName}" class="labs-card-image">
+                <div class="labs-card-content">
+                    <p><strong>${lab.professor} 교수님</strong></p>
+                    <h3>${lab.labName}</h3>
+                    <p>${lab.description}</p>
+                    <p class="labs-tags">${lab.tags.join(" ")}</p>
+                </div>
+            </div>
+        `).join("");
+    };
+
+    const sortLabs = (order) => {
+        let sortedData = [...labsData];
+        if (order === "asc") sortedData.sort((a, b) => a.labName.localeCompare(b.labName));
+        else if (order === "desc") sortedData.sort((a, b) => b.labName.localeCompare(a.labName));
+        renderLabs(sortedData);
+    };
+
+    sortBtn.addEventListener("click", () => sortOptions.classList.toggle("show"));
+    sortOptions.addEventListener("click", (e) => {
+        const order = e.target.dataset.sort;
+        sortOptions.classList.remove("show");
+        if (order === "all") renderLabs(labsData);
+        else sortLabs(order);
+    });
+
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        const filteredData = labsData.filter(lab => lab.professor.toLowerCase().includes(query) || lab.labName.toLowerCase().includes(query));
+        renderLabs(filteredData);
+    });
+
+    renderLabs(labsData);
+});
+
+    </script>
+
+</body>
+</html>
