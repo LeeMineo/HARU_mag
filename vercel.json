@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/pages/homePage.html" },
+    { "source": "/home", "destination": "/pages/homePage.html" },
+    { "source": "/articles/economy", "destination": "/pages/articles/economyPage.html" },
+    { "source": "/articles/interview", "destination": "/pages/articles/interviewPage.html" },
+    { "source": "/articles/movie", "destination": "/pages/articles/moviePage.html" },
+    { "source": "/auth/login", "destination": "/pages/auth/loginPage.html" },
+    { "source": "/auth/signup", "destination": "/pages/auth/signupPage.html" },
+    { "source": "/lab/cap1", "destination": "/pages/lab/cap1Page.html" },
+    { "source": "/lab/cap2", "destination": "/pages/lab/cap2Page.html" },
+    { "source": "/lab/labs", "destination": "/pages/lab/labsPage.html" },
+    { "source": "/news/award", "destination": "/pages/news/awardPage.html" },
+    { "source": "/news/sw", "destination": "/pages/news/swPage.html" },
+    { "source": "/newsletter", "destination": "/pages/newsletter/newsletterPage.html" },
+    { "source": "/shop/goods", "destination": "/pages/shop/goodsPage.html" },
+    { "source": "/shop/detail", "destination": "/pages/shop/detailPage.html" }
+  ]
+}
