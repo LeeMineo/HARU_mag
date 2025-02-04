@@ -1,15 +1,21 @@
-/* 목차와 콘텐츠 레이아웃 */
+/* 전체 레이아웃 */
 .contents-page {
     display: flex;
-    height: calc(100vh - 80px); /* 헤더 제외 전체 높이 */
+    height: 100vh; /* 헤더 제외 전체 높이 */
 }
 
+/* 콘텐츠 영역 */
+.inner-content {
+    width: 65rem; /* 콘텐츠 영역 너비 복원 */
+    padding-top: 2rem;
+    overflow: hidden;
+}
+
+/* 사이드바 (목차) */
 .contents-nav {
     width: 35%; /* 목차 영역 너비 */
-    padding: 2rem;
-    background-color: #fff; /* 깔끔한 배경색 */
-    //border-right: 1px solid #ddd;
-    padding-top: 10rem;
+    padding: 10rem 2rem 2rem; /* 기존 스타일 복원 */
+    background-color: #fff;
 }
 
 .contents-nav ul {
@@ -20,57 +26,36 @@
 
 .contents-nav li {
     margin-bottom: 1rem;
+    font-family: 'RedHatDisplay', sans-serif; /* 지정 폰트 */
+    font-weight: 600;
 }
 
 .contents-item {
-    display: block;
+    display: inline-block; /* inline-block으로 변경해 글씨 크기에 맞춤 */
     font-size: 1.2rem;
-    font-weight: normal;
     text-decoration: none;
     color: #000;
-    padding: 0.5rem 0;
+    padding: 0.2rem 0;
     border: none;
     background: none;
     cursor: pointer;
     text-align: left;
-    position: relative; /* ::after 위치 기준 */
+    position: relative;
 }
 
 .contents-item::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0.3rem; /* 텍스트 아래에 밑줄 위치 */
-    width: 0; /* 초기 밑줄 길이 */
-    height: 0.1rem; /* 밑줄 두께 */
+    bottom: 0.1rem; /* 글씨 바로 아래 */
+    width: 0; /* 초기 상태 */
+    height: 1px; /* 밑줄 두께 */
     background-color: #000; /* 밑줄 색상 */
-    transition: width 0.3s ease; /* 부드러운 전환 효과 */
+    transition: width 0.5s ease; /* 부드러운 애니메이션 */
 }
+
+/* 호버 상태와 활성 상태에서 밑줄 표시 */
 .contents-item:hover::after,
 .contents-item.active::after {
-    width: 100%; /* 호버 또는 활성화 시 전체 길이로 확장 */
-}
-
-.contents-item:hover {
-    //text-decoration: underline;
-    //color: #555;
-}
-
-.contents-item.active {
-    //text-decoration: underline; /* 선택된 항목 밑줄 */
-    //font-weight: bold;
-    color: #000;
-}
-
-.inner-content {
-    width: 65%; /* 콘텐츠 영역 너비 */
-    padding-top: 2rem;
-    //background-color: #f9f9f9; /* 깔끔한 배경색 */
-    overflow: hidden;
-}
-
-.inner-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+    width: 100%; /* 글씨 크기에 맞게 */
 }

@@ -20,16 +20,17 @@
   @import 'homePage';
   @import 'header';
   @import 'footer';
-  @import 'loginPage';
   @import 'contents';
+  @import 'detailPage';
+
+  @import 'auth/loginPage';
+  @import 'auth/signupPage';
 
   @import 'articles/economyPage';
   @import 'articles/interviewPage';
   @import 'articles/moviePage';
 
-  @import 'lab/labs';
-  @import 'lab/capIPage';
-  @import 'lab/capIIPage';
+  @import 'lab/labPage';
 
   @import 'news/awardPage';
   @import 'news/swPage';
